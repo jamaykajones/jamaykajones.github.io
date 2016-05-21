@@ -1,0 +1,107 @@
+<html>
+ <head>
+   <!-- This is where you include dependencies -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/cyborg/bootstrap.min.css">
+   <script src="jquery-2.2.3.js"></script>
+   <style>
+     /*This is where CSS goes*/
+     body {
+       text-align:center;
+       background-image: url("http://3.bp.blogspot.com/-EAWPX9UqDuU/T3OQySxHCyI/AAAAAAAACfw/lIv3CNYUfpA/s1600/purple-hello-kitty-wallpaper-desktop.jpg");
+       background-size: cover;
+      /*background-color: rbga(164,0,200,.5);*/
+    }
+     h1 {
+       font-size: 50px;
+       font-weight: bolder;
+     }
+     p {
+       font-weight: bold;
+       font-size: 16px;
+     }
+     button {
+       background-color: purple;
+       color: white;
+       font-weight: bold;
+       font-size: 18;
+       height: 50px;
+       width: 150px;
+       padding: 10px;
+       margin: 10px;
+       border-radius: 25px;
+     }
+     #counter_happy {
+       font-weight: bolder;
+       font-size: 28px
+     }
+     #counter_full {
+       font-weight: bolder;
+       font-size: 28px
+     }
+   </style>
+ </head>
+ <body>
+   <!-- This is where your content goes -->
+   <!-- Your content provides your page's structure -->
+   <div>
+     <h1>Tamagotchi</h1>
+
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+     <div id="HK-img">
+       <img src="HKtama.jpg">
+     </div>
+     <p>Keep Luna Happy and Fed</p>
+
+     <button id="Feed-btn">Feed</button>
+     <div id="counter_full"></div>
+
+     <button id="Pet-btn">Pet</button>
+     <div id="counter_happy"></div>
+
+     <button id="random">API</button>
+
+
+     <script>
+     //This is where you javascript goes
+      var pet = {Name : "Luna", Fullness : 500, Happiness : 500};
+
+      var deadTama = setInterval(function(){
+            pet.Happiness -=5;
+            pet.Fullness -=5;
+            $('#counter_happy').text("Happiness: " + pet.Happiness);
+            $('#counter_full').text("Fullness: " + pet.Fullness);
+
+            if(pet.fullness <= 0 || pet.Happiness <= 0) {
+              alert('You have killed Luna');
+              clearInterval(deadTama);
+            }
+      }, 1000);
+
+      $('#Feed-btn').click(function() { //feed button will increment a random number between 1-5
+        pet.Fullness += Math.floor((Math.random() * 5) +1);
+      });
+
+      $('#Pet-btn').click(function() { //pet button will increment a random number between 1-5
+        pet.Happiness += Math.floor((Math.random() * 5) +1);
+      });
+
+      $('#HK-img').click(function() { //if the picture is clicked it has a 25% chance of adding 100 to both happiness and fullness
+        if(Math.random() <= 0.25){
+          pet.Happiness += 100;
+          pet.Fullness += 100;
+        }
+      });
+
+      $('#random').click(function(){
+               $.get('http://clevelandcodes-sample-api.herokuapp.com/tamagotchi', function(response) {
+                 pet.Fullness += response.feed;
+                 pet.Happiness += response.pet;
+                 $('#counter_full').text("Fullness: " + pet.Fullness);
+                 $('#counter_happy').text("Happiness: " + pet.Happiness);
+               });
+      });
+   </script>
+ </body>
+</html>
