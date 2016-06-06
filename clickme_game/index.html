@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+
+       <!-- Latest compiled and minified CSS of Bootstrap -->
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" \
+       integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+       <!-- Optional theme for Bootstrap -->
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" \
+       integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+       <!-- Latest compiled and minified JavaScript for Bootstrap -->
+       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" \
+       integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+       <script src=js/nyanBomb.js></script>
+
+        <style>
+        .cat {
+          width: 80px;
+          height:50px;
+          top: -60px;
+          left: 100px;
+          position: fixed;
+        }
+
+        .bomb {
+          width: 70px;
+          height:70px;
+          top: -60px;
+          left: 100px;
+          position: fixed;
+        }
+
+        p {
+          color: blue;
+          bottom:10px;
+          position: fixed;
+          font-size: 28px;
+        }
+
+        </style>
+    </head>
+    <body>
+
+      <button id='begin'>START</button>
+      <button id='end'>QUIT</button>
+      <p>Player's Score:<span id='p_score'></span></p>
+
+    </body>
+</html>
